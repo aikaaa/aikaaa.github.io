@@ -1,35 +1,19 @@
-<!doctype html>
-<html lang="zh-Hans">
-<head>
-<meta charset="utf-8">
-<title>“夏夜晚风” - Closing Time</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="http://aikaaa.me/2019/05/26/“夏夜晚风”/">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="“夏夜晚风”">
-<meta property="og:url" content="http://aikaaa.me/2019/05/26/“夏夜晚风”/index.html">
-<meta property="og:site_name" content="Closing Time">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
-<meta property="og:updated_time" content="2019-05-26T02:23:12.341Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="“夏夜晚风”">
-<meta name="twitter:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
+extends includes/layout.pug
 
 
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="/styles.f6e745592a9a46992ff6.css" rel="stylesheet">
-<link rel="stylesheet" href="/theme.804a85dad91e4dba2a2a.css">
-<script src="/config.59d4e49f1e2c1b350630.js"></script>
+block TOC
+	aside#toc-column
+		//- 这个block的渲染与否取决于当前视窗的宽度，具体的控制在scss文件里头实现。
+		#toc-column-inner-wrapper
+			- var contentsOptions = {list_number: theme.toc.list_number_on};
+			#post-toc!= toc(page.content, contentsOptions)
 
-</head>
-<body lang="zh-Hans">
-<is-a></is-a>
-<script src="/runtime.ee6f73bc31187f12810a.js"></script>
-<script src="/polyfills.14df1390f4da8e838f05.js"></script>
-<script src="/main.0c926d87f8cb6ab96db0.js"></script>
-</body>
-</html>
+
+
+block mainContent
+	main#main-content-column
+		#main-content-wrapper
+			#post-full-content!= page.content
+			include includes/post-tags
+			include includes/post-categories
+		
